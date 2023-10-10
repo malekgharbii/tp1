@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.tp1.databinding.FragmentSecondBinding
 
 /**
@@ -34,6 +35,17 @@ class SecondFragment : Fragment() {
 
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+
+            val args:SecondFragmentArgs by navArgs()
+            val countText=getString(R.string.how_is_a_random_number_between_0_and_d, args.arg)
+            binding.textView2.text= countText.toString()
+            val random=java.util.Random()
+            var randomNumber=0
+            if(args.arg > 0){
+                randomNumber=random.nextInt(args.arg+1)
+            }
+            binding.textView3.text=randomNumber.toString()
+
         }
     }
 

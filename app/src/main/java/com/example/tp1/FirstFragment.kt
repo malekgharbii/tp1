@@ -38,6 +38,11 @@ class FirstFragment : Fragment() {
             mytoast.show()
         }
 
+        binding.btnRandom.setOnClickListener {
+           val n = binding.textView.text.toString().toInt()
+            val action=FirstFragmentDirections.actionFirstFragmentToSecondFragment(n)
+            findNavController().navigate(action)
+        }
 
 
         binding.btnCount.setOnClickListener {
